@@ -16,10 +16,10 @@ imgpoints = [] # 2d points in image plane.
 images = glob.glob('*.jpg')
 
 for fname in images:
-    img = cv2.imread(fname)
+    img = cv2.imread(fname) # 画像ファイルの読み込み
     gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 
-    # Find the chess board corners
+    # Find the chess board corners(画像中からチェスボード上の格子点を検出)
     ret, corners = cv2.findChessboardCorners(gray, (7,6),None)
 
     # If found, add object points, image points (after refining them)
@@ -31,7 +31,7 @@ for fname in images:
 
         # Draw and display the corners
         img = cv2.drawChessboardCorners(img, (7,6), corners2,ret)
-        cv2.imshow('img',img)
+        cv2.imshow('img',img) # 画像をウィンドウ上に表示する
         cv2.waitKey(500)
 
 cv2.destroyAllWindows()
